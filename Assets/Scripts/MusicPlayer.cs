@@ -2,15 +2,16 @@
 using System.Collections;
 
 public class MusicPlayer : MonoBehaviour {
-
+	public static int musicPlayerCount = 0;
+	
 	// Use this for initialization
 	void Start () {
-		// prevents gameObject from being destroyed when a new scene is loaded
-		GameObject.DontDestroyOnLoad(gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		musicPlayerCount++;
+		
+		if(musicPlayerCount > 1) {
+			Destroy(gameObject);
+		}
+		
+		GameObject.DontDestroyOnLoad(gameObject); // prevents gameObject from being destroyed when a new scene is loaded
 	}
 }
