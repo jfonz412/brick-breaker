@@ -2,16 +2,16 @@
 using System.Collections;
 
 public class MusicPlayer : MonoBehaviour {
-	public static int musicPlayerCount = 0;
+	static MusicPlayer instance = null;
 	
 	// Use this for initialization
 	void Start () {
-		musicPlayerCount++;
-		
-		if(musicPlayerCount > 1) {
+		if(instance != null) {
 			Destroy(gameObject);
+			Debug.Log("Duplicate music player destroyed");
+		}else {
+			instance = this;
+			GameObject.DontDestroyOnLoad(gameObject);
 		}
-		
-		GameObject.DontDestroyOnLoad(gameObject); // prevents gameObject from being destroyed when a new scene is loaded
 	}
 }
