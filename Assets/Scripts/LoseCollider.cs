@@ -3,12 +3,15 @@ using System.Collections;
 
 public class LoseCollider : MonoBehaviour {
 
-	public LevelManager levelManager;
+	private LevelManager levelManager;
 
+	void Start(){
+		
+	}
 	//if one object is a trigger (ignore physics)
 	void OnTriggerEnter2D (Collider2D trigger) {
-		print("Trigger");
-		levelManager.LoadLevel("Lose");
+		levelManager = GameObject.FindObjectOfType<LevelManager>();
+		levelManager.LoadLevel("Lose");		
 	}
 	
 	//if niether object is a trigger (actual collisions)
