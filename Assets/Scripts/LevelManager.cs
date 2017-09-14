@@ -18,4 +18,12 @@ public class LevelManager : MonoBehaviour {
 	public void LoadNextLevel(){
 		Application.LoadLevel(Application.loadedLevel + 1);
 	}
+	
+	//helps Brick talk to LevelManager
+	public void BrickDestroyed(){
+		// you can call a class's public static from the class itself
+		if (Brick.breakableCount <= 0){
+			LoadNextLevel();
+		}
+	}
 }
