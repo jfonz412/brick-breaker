@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Brick : MonoBehaviour {
-	public int maxHits;
+public class Brick : MonoBehaviour {	
 	public Sprite[] hitSprites;
-	
+
 	private int timesHit;
 	private LevelManager levelmanager;
 
@@ -21,8 +20,15 @@ public class Brick : MonoBehaviour {
 	
 	//this is it's own event, like Update/Start
 	void OnCollisionEnter2D(Collision2D coll) {
+		bool isBreakable = (this.tag == "Breakable");
+		if(isBreakable){
+			HandleHits();
+		}
+	}
+	
+	void HandleHits(){
 		timesHit++;
-		Debug.Log(timesHit);
+		int maxHits = hitSprites.Length + 1;
 		if(timesHit >= maxHits){
 			Destroy (gameObject); //not .this
 		}else {
@@ -32,7 +38,9 @@ public class Brick : MonoBehaviour {
 	
 	void LoadSprites(){
 		int spriteIndex = timesHit - 1;
-		this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		if (hitSprites[spriteIndex]){
+			this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+		}
 	}
 	
 	// TODO Remove this method once we can actually win
