@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Brick : MonoBehaviour {	
+public class Brick : MonoBehaviour {
+
+	public AudioClip crack;	
 	public Sprite[] hitSprites;
 	//static or class vars are not shown in inspecter even if public
 	public static int breakableCount = 0; //can also do this in Start()
@@ -27,6 +29,8 @@ public class Brick : MonoBehaviour {
 	
 	//this is it's own event, like Update/Start
 	void OnCollisionEnter2D(Collision2D coll) {
+		//create audiosource where clip brick is or was
+		AudioSource.PlayClipAtPoint(crack,transform.position); //plays at the position of the brick
 		if(isBreakable){
 			HandleHits();
 		}
