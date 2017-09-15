@@ -22,14 +22,14 @@ public class Paddle : MonoBehaviour {
 	void MoveWithMouse(){
 		Vector3 paddlePos = new Vector3(Mathf.Clamp(8.0f,0.5f,15.5f), this.transform.position.y, 0f);
 		float mousePosInblocks = Input.mousePosition.x / Screen.width * 16; //16 for 16 total blocks *		
-		paddlePos.x = Mathf.Clamp (mousePosInblocks, 0.5f, 15.5f);
+		paddlePos.x = Mathf.Clamp (mousePosInblocks, 0.9f, 15.09f);
 		this.transform.position = paddlePos;
 	}
 	
 	void AutoPlay(){
 		Vector3 paddlePos = new Vector3(Mathf.Clamp(8.0f,0.5f,15.5f), this.transform.position.y, 0f);
 		Vector3 ballPos = ball.transform.position;		
-		paddlePos.x = Mathf.Clamp (ballPos.x, 0.5f, 15.5f);
+		paddlePos.x = Mathf.Clamp (ballPos.x, 0.9f, 15.09f);
 		this.transform.position = paddlePos;
 	}
 }
