@@ -42,6 +42,7 @@ public class Brick : MonoBehaviour {
 		if(timesHit >= maxHits){
 			breakableCount--;
 			levelmanager.BrickDestroyed();
+			Debug.Log (breakableCount);
 			Destroy (gameObject); //not '.this'
 		}else {
 			LoadSprites();
