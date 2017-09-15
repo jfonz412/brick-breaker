@@ -20,7 +20,7 @@ public class Ball : MonoBehaviour {
 			// Wait for mouse input
 			if(Input.GetMouseButtonDown(0)){
 				hasStarted = true;
-				this.rigidbody2D.velocity = new Vector2(2f,10f);
+				this.rigidbody2D.velocity = new Vector2(2f,8f);
 			}
 		}
 	}

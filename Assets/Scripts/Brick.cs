@@ -29,9 +29,9 @@ public class Brick : MonoBehaviour {
 	
 	//this is it's own event, like Update/Start
 	void OnCollisionEnter2D(Collision2D coll) {
-		//create audiosource where clip brick is or was
-		AudioSource.PlayClipAtPoint(crack,transform.position); //plays at the position of the brick
 		if(isBreakable){
+			//create audiosource where clip brick is or was
+			AudioSource.PlayClipAtPoint(crack,transform.position);
 			HandleHits();
 		}
 	}
