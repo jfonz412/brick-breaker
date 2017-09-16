@@ -5,6 +5,7 @@ public class Brick : MonoBehaviour {
 
 	public AudioClip crack;	
 	public Sprite[] hitSprites;
+	public GameObject Smoke;
 	//static or class vars are not shown in inspecter even if public
 	public static int breakableCount = 0; //can also do this in Start()
 	
@@ -43,10 +44,16 @@ public class Brick : MonoBehaviour {
 			breakableCount--;
 			levelmanager.BrickDestroyed();
 			Debug.Log (breakableCount);
+			PuffSmoke();
 			Destroy (gameObject); //not '.this'
 		}else {
 			LoadSprites();
 		}
+	}
+	
+	void PuffSmoke(){
+		GameObject smoke = Instantiate(Smoke, transform.position, Quaternion.identity) as GameObject;
+		smoke.GetComponent<ParticleSystem>().startColor = gameObject.GetComponent<SpriteRenderer>().color;
 	}
 	
 	void LoadSprites(){
